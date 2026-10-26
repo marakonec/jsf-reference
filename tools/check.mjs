@@ -10,6 +10,7 @@ const STEPS = [
   ['лінтинг', ['npm', 'run', '--silent', 'lint']],
   ['складання', ['npm', 'run', '--silent', 'build']],
   ['тести', ['npm', 'run', '--silent', 'test']],
+  ['наскрізні', ['npm', 'run', '--silent', 'test:e2e']],
 ];
 
 const results = [];

@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import { readCatalog } from '../src/server/store';
+import { rowsForClient } from '../src/server/catalog-rows';
 import { Catalog } from '../src/ui/Catalog';
 import { SourceStamp } from '../src/ui/SourceStamp';
 
@@ -19,7 +20,7 @@ async function CatalogContent() {
   return (
     <>
       <SourceStamp generatedAt={generatedAt} cached={cached} />
-      <Catalog items={items} />
+      <Catalog items={rowsForClient(items)} />
     </>
   );
 }

@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { Header } from '../src/ui/Header';
 
-export const metadata = { title: 'Каталог · запит на сервері' };
+export const metadata = { title: 'Каталог' };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

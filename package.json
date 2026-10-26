@@ -7,7 +7,6 @@
   "workspaces": [
     "react-ts",
     "svelte-5",
-    "variant-client",
     "variant-server"
   ],
   "scripts": {
@@ -29,7 +28,8 @@
     "attribution": "node tools/attribution.mjs",
     "lockfile": "node tools/lockfile.mjs",
     "ready": "node tools/ready.mjs",
-    "check": "node tools/check.mjs"
+    "check": "node tools/check.mjs",
+    "test:e2e": "npm run --silent test:e2e --workspace variant-server"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

@@ -1,6 +1,7 @@
 // Імпорт простором імен, як у документації zod. Форма `import { z } from 'zod'`
 // під Turbopack тягнула в клієнтський код усі мовні пакети повідомлень.
 import * as z from 'zod';
+import { CATEGORIES } from './data';
 
 export const ItemSchema = z.object({
   id: z.number(),
@@ -23,8 +24,11 @@ export const CatalogSchema = z.object({
 // контролює клієнт, тому вхід перевіряється на сервері.
 export const NewItemSchema = z.object({
   name: z.string().trim().min(3).max(80),
-  category: z.string().trim().min(2).max(40),
+  category: z.enum(CATEGORIES),
   mass: z.coerce.number().positive().max(10000),
+  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  available: z.boolean(),
+  note: z.string().trim().max(200),
 });
 
 export const IdSchema = z.coerce.number().int().positive();

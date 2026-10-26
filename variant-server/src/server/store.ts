@@ -71,9 +71,9 @@ export async function toggleMark(id: number): Promise<boolean> {
   return marked.has(id);
 }
 
-export async function createItem(data: { name: string; category: string; mass: number }): Promise<number> {
+export async function createItem(data: { name: string; category: string; mass: number; date: string; available: boolean }): Promise<number> {
   await sourceDelay();
   const id = Math.max(...allItems().map((item) => item.id)) + 1;
-  added.push({ id, ...data, date: new Date().toISOString().slice(0, 10), available: true });
+  added.push({ id, name: data.name, category: data.category, mass: data.mass, date: data.date, available: data.available });
   return id;
 }

@@ -17,7 +17,8 @@ export async function toggleMarkAction(form: FormData): Promise<void> {
 export interface FormState { readonly errors: readonly string[] }
 
 export async function createItemAction(_previous: FormState, form: FormData): Promise<FormState> {
-  const raw = Object.fromEntries(form);
+  // Позначка форми приходить як 'on' або не приходить зовсім.
+  const raw = { ...Object.fromEntries(form), available: form.has('available') };
   const bad = mismatches(NewItemSchema, raw);
   if (bad.length) return { errors: bad };
   const id = await createItem(NewItemSchema.parse(raw));
