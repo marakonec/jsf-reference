@@ -1,0 +1,14 @@
+node_modules
+dist
+dist-readable
+coverage
+.env
+.env.local
+.next
+next-env.d.ts
+*.tsbuildinfo
+test-results
+playwright-report
+check-reports
+.lighthouseci
+.vercel

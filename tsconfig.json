@@ -1,0 +1,6 @@
+{
+  // У TypeScript 6 без явного поля types тести документів не бачать модулів Node.
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": { "types": ["node", "vite/client"] },
+  "include": ["shared", "contract", "tests"]
+}

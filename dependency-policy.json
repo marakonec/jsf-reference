@@ -1,0 +1,10 @@
+{
+  "$comment": "Машиночитна частина політики залежностей з ADR-004. Читає node tools/lifecycle-scripts.mjs --check. Кожен дозвіл має причину і дату рішення.",
+  "auditLevel": "high",
+  "allowedInstallScripts": {
+    "fsevents": {
+      "reason": "необов'язкова залежність vite під macOS (os: darwin), на Windows і Linux не встановлюється",
+      "decided": "2026-09-25"
+    }
+  }
+}

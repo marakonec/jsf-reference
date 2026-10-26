@@ -1,0 +1,20 @@
+{
+  "name": "jsf-runner",
+  "private": true,
+  "version": "0.3.0",
+  "type": "module",
+  "description": "Серії прогонів Lighthouse за адресою з записом у CSV і діаграмою розкиду, вимірювання затримки взаємодії",
+  "engines": { "node": ">=22.19" },
+  "scripts": {
+    "lighthouse": "node lighthouse.mjs",
+    "html": "node scatter.mjs",
+    "interaction": "node interaction.mjs",
+    "test": "node --test --test-concurrency=1 \"tests/*.test.mjs\"",
+    "check": "node check.mjs"
+  },
+  "dependencies": {
+    "chrome-launcher": "1.2.1",
+    "lighthouse": "13.4.1",
+    "puppeteer-core": "25.13.0"
+  }
+}
