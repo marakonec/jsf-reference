@@ -29,10 +29,12 @@
     "lockfile": "node tools/lockfile.mjs",
     "ready": "node tools/ready.mjs",
     "check": "node tools/check.mjs",
-    "test:e2e": "npm run --silent test:e2e --workspace variant-server"
+    "test:e2e": "npm run --silent test:e2e --workspace variant-server",
+    "pipeline": "node tools/pipeline.mjs"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
+    "@lhci/cli": "0.15.1",
     "@testing-library/dom": "10.4.1",
     "@types/node": "22.20.2",
     "eslint": "10.10.0",

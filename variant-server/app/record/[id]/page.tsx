@@ -1,6 +1,8 @@
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { readItem } from '../../../src/server/store';
+import { readDescription } from '../../../src/server/descriptions';
+import { RecordDescription } from '../../../src/ui/RecordDescription';
 import { IdSchema } from '../../../src/shared/data-contract';
 import { toggleMarkAction } from '../../actions';
 
@@ -19,6 +21,7 @@ async function RecordContent({ params }: { params: Promise<{ id: string }> }) {
   if (!parsed.success) notFound();
   const item = await readItem(parsed.data);
   if (!item) notFound();
+  const description = readDescription(item.id);
   return (
     <>
       <h1>{item.name}</h1>
@@ -29,6 +32,7 @@ async function RecordContent({ params }: { params: Promise<{ id: string }> }) {
         <dt>Позначений</dt><dd>{item.marked ? 'так' : 'ні'}</dd>
         <dt>Код перевірки</dt><dd><output>{item.verificationCode}</output></dd>
       </dl>
+      {description !== null && <><h2>Опис від постачальника</h2><RecordDescription text={description} /></>}
       <form action={toggleMarkAction}>
         <input type="hidden" name="id" value={item.id} />
         <button type="submit">Перемкнути позначку</button>

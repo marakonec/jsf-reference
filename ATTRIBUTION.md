@@ -9,3 +9,8 @@
 |---|---|---|---|---|
 | приклад: набір даних `data.json` | генератор даних шаблону курсу | 13.09.2026 | `data/data.json` | не змінювано |
 | каркас проєкту | шаблон репозиторію лабораторних робіт дисципліни | 25.10.2026 | увесь репозиторій | не змінювано |
+| залежності випуску: next, react, react-dom, server-only, svelte, zod | реєстр npm, https://www.npmjs.com (сторінки пакетів) | 16.4.1, 19.3.0, 19.3.0, 0.0.1, 5.57.0, 4.6.6 | `package.json` робочих просторів (dependencies) | не змінювалися, є в переліку складових |
+| засоби складання й перевірки типів: vite, @vitejs/plugin-react, @sveltejs/vite-plugin-svelte, typescript, svelte-check, @types/node, @types/react, @types/react-dom | реєстр npm | 8.3.3, 6.1.1, 7.3.0, 6.0.3, 4.7.6, 22.20.2, 19.3.0, 19.3.0 | devDependencies кореня й робочих просторів | не змінювалися, є в переліку складових як залежності розробки |
+| засоби тестування: vitest, jsdom, @testing-library/dom, @testing-library/react, @testing-library/svelte, @playwright/test, @axe-core/playwright | реєстр npm | 5.0.0, 30.0.1, 10.4.1, 16.3.3, 5.4.2, 1.63.0, 4.13.0 | devDependencies кореня й робочих просторів | не змінювалися |
+| засоби лінтингу: eslint, @eslint/js, typescript-eslint, globals | реєстр npm | 10.10.0, 10.0.1, 8.70.0, 17.12.0 | devDependencies кореня | не змінювалися |
+| Lighthouse CI: @lhci/cli | реєстр npm | 0.15.1 | devDependencies кореня | не змінювався, повідомлення рівня high у його дереві залежностей прийнято в ADR-004 |
