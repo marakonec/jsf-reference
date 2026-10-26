@@ -4,7 +4,12 @@
   "version": "0.3.0",
   "type": "module",
   "description": "Шаблон репозиторію лабораторних робіт дисципліни JavaScript Frameworks",
-  "workspaces": ["react-ts", "svelte-5"],
+  "workspaces": [
+    "react-ts",
+    "svelte-5",
+    "variant-client",
+    "variant-server"
+  ],
   "scripts": {
     "build": "node tools/workspaces.mjs build",
     "typecheck": "node tools/workspaces.mjs typecheck",
