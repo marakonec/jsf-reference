@@ -1,0 +1,5 @@
+date;component;variant;quantity;unit;run;value;conditions;versions
+2026-10-25 12:25;ЛР1;react-ts;обсяг складання;Б;1;221786;Node 24.22.1 · Windows_NT 10.0.26200 · 12th Gen Intel(R) Core(TM) i7-1255U ×12 · випуск · трансляція: ні;v24.22.1
+2026-10-25 12:25;ЛР1;svelte-5;обсяг складання;Б;1;38045;Node 24.22.1 · Windows_NT 10.0.26200 · 12th Gen Intel(R) Core(TM) i7-1255U ×12 · випуск · трансляція: ні;v24.22.1
+2026-10-25 12:41;ЛР2;variant-client;JS маршруту /;Б;1;609083;Node 24.22.1 · Windows_NT 10.0.26200 · 12th Gen Intel(R) Core(TM) i7-1255U ×12 · випуск · трансляція: ні · next start, локально;v24.22.1
+2026-10-25 12:41;ЛР2;variant-server;JS маршруту /;Б;1;467005;Node 24.22.1 · Windows_NT 10.0.26200 · 12th Gen Intel(R) Core(TM) i7-1255U ×12 · випуск · трансляція: ні · next start, локально;v24.22.1
