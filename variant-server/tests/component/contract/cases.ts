@@ -1,67 +1,17 @@
-import { rowCount, summary, typeFilter, nextUpdate } from './screen';
+// Випадки контракту першої роботи з contract/cases.ts у корені проєкту, без правок.
+// Компонент каталогу в застосунку зберіг поле «Фільтр», групу рядків «Записи» і
+// повідомлення «Підсумок». Сортування й позначки доступності в ньому немає, тому
+// випадки для цих елементів у компонентний тест не входять.
+import { cases as firstLabCases } from '../../../../contract/cases.js';
 
-async function filterBy(text: string): Promise<void> {
-  typeFilter(text);
-  await nextUpdate();
+const KEPT = new Set([
+  'початковий стан показує всі записи, підсумок збігається з таблицею',
+  'фільтр звужує вибірку без урахування регістру',
+  'відсутній збіг дає нуль, порожній фільтр повертає всі записи',
+]);
+
+export const cases = firstLabCases.filter((contractCase) => KEPT.has(contractCase.name));
+
+if (cases.length !== KEPT.size) {
+  throw new Error('у contract/cases.ts немає частини випадків, які має виконувати компонентний тест');
 }
-
-export const TOTAL = 1000;
-
-export interface Expect {
-  (value: unknown): {
-    toBe(expected: unknown): void;
-    toBeGreaterThan(limit: number): void;
-    toBeLessThan(limit: number): void;
-  };
-}
-
-export interface ContractCase {
-  name: string;
-  run(expect: Expect): Promise<void>;
-}
-
-export const cases: ContractCase[] = [
-  {
-    name: 'початковий стан показує всі записи',
-    async run(expect: Expect) {
-      expect(rowCount()).toBe(TOTAL);
-      expect(summary().count).toBe(TOTAL);
-    },
-  },
-  {
-    name: 'фільтр звужує вибірку, підсумок збігається з таблицею',
-    async run(expect: Expect) {
-      await filterBy('вузол');
-      const n = rowCount();
-      expect(n).toBeGreaterThan(0);
-      expect(n).toBeLessThan(TOTAL);
-      expect(summary().count).toBe(n);
-    },
-  },
-  {
-    name: 'регістр не має значення',
-    async run(expect: Expect) {
-      await filterBy('вузол');
-      const lower = rowCount();
-      await filterBy('ВУЗОЛ');
-      expect(rowCount()).toBe(lower);
-    },
-  },
-  {
-    name: 'порожній фільтр повертає всі записи',
-    async run(expect: Expect) {
-      await filterBy('вузол');
-      await filterBy('');
-      expect(rowCount()).toBe(TOTAL);
-    },
-  },
-  {
-    name: 'рядок, якого немає, дає нуль рядків і нульовий підсумок',
-    async run(expect: Expect) {
-      await filterBy('щось, чого в каталозі немає');
-      expect(rowCount()).toBe(0);
-      expect(summary().count).toBe(0);
-      expect(summary().mass).toBe(0);
-    },
-  },
-];
