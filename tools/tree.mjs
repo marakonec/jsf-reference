@@ -26,4 +26,5 @@ printTable([
 const times = Math.round(packages.length / new Set([...prod, ...dev]).size);
 const word = times % 10 >= 2 && times % 10 <= 4 && (times % 100 < 12 || times % 100 > 14) ? 'рази' : 'разів';
 console.log(`у файлі блокування в ${times} ${word} більше пакетів, ніж названо в маніфестах`);
+console.log('записи робочих просторів і посилання на них пакетами не рахуються, npm run lifecycle рахує так само');
 console.log("ланцюг для окремого пакета показує стандартна команда npm explain \"НАЗВА_ПАКЕТА\"");
