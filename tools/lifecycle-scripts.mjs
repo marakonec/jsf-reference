@@ -14,6 +14,13 @@ const EVENTS = ['preinstall', 'install', 'postinstall'];
 
 const lock = JSON.parse(fs.readFileSync(path.join(root, 'package-lock.json'), 'utf8'));
 const entries = Object.entries(lock.packages).filter(([key]) => key !== '');
+// Пакетами рахуються ті самі записи, що й у npm run tree: шлях містить
+// node_modules/ і запис не є посиланням на робочий простір. Записи робочих
+// просторів і посилання на них теж перевіряються на скрипти встановлення,
+// але пакетами з реєстру не є і в лічбу пакетів не входять.
+const isPackage = ([key, pkg]) => key.includes('node_modules/') && !pkg.link;
+const packageCount = entries.filter(isPackage).length;
+const workspaceCount = entries.length - packageCount;
 const nameOf = (key, pkg) => pkg.name ?? key.split('node_modules/').pop();
 
 // Хто оголосив пакет, визначається за файлом блокування, бо npm explain не
@@ -52,7 +59,8 @@ for (const [key, pkg] of entries) {
 }
 
 printHeader('ЛР4', 'скрипти встановлення', { mode: 'дерево залежностей за package-lock.json' });
-console.log(`пакетів у дереві залежностей: ${entries.length} · виконують код під час встановлення: ${found.length}`);
+console.log(`пакетів у package-lock.json: ${packageCount} (як у npm run tree) · виконують код під час встановлення: ${found.length}`);
+if (workspaceCount) console.log(`перевірено також записів робочих просторів і посилань на них: ${workspaceCount}, пакетами з реєстру вони не є`);
 console.log(`prepare оголошують ${withPrepare} встановлених пакетів, для пакетів із реєстру під час встановлення він не виконується`);
 console.log('─'.repeat(64));
 printTable(found.map((f) => f.row));
