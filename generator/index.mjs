@@ -10,7 +10,7 @@ const MAX_COUNT = 2000;
 const MAX_BYTES = 5 * 1024 * 1024;
 const DAY_MS = 86400000;
 
-// mulberry32. Власний генератор замість Math.random (у нього немає зерна) і замість
+// mulberry32. Власний генератор замість Math.random (йому не можна задати початкове значення) і замість
 // пакета з реєстру, щоб набір не залежав від версії залежності.
 function prng(seed) {
   let a = seed >>> 0;
@@ -25,7 +25,7 @@ function prng(seed) {
 
 function readSeed() {
   const file = path.join(dir, 'seed.txt');
-  if (!fs.existsSync(file)) throw new Error(`немає файлу ${file}, зерно має лежати в репозиторії`);
+  if (!fs.existsSync(file)) throw new Error(`немає файлу ${file}, початкове значення має лежати в репозиторії`);
   const seed = Number(fs.readFileSync(file, 'utf8').trim());
   if (!Number.isInteger(seed) || seed <= 0) throw new Error('seed.txt має містити одне ціле додатне число');
   return seed;
@@ -57,7 +57,7 @@ function problems(records) {
     else if (ids.has(record.id)) found.push(`запис ${index}: id ${record.id} повторюється`);
     ids.add(record.id);
     if (typeof record.name !== 'string' || !/\d/.test(record.name)) {
-      found.push(`запис ${index}: name має містити числовий код, бо прогонник вводить у фільтр цифри`);
+      found.push(`запис ${index}: name має містити числовий код, бо інструмент вимірювань вводить у фільтр цифри`);
     }
   });
   return found;

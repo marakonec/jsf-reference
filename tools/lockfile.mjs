@@ -4,7 +4,7 @@ import process from 'node:process';
 import { printHeader, printTable } from './output.mjs';
 
 // Пошук пакетів і версій з опису інциденту у файлах блокування проєкту й
-// прогонника. Шукається файл блокування, а не встановлене дерево залежностей,
+// інструмента вимірювань. Шукається файл блокування, а не встановлене дерево залежностей,
 // бо на іншій ОС необов'язкові пакети не встановлюються.
 //   npm run lockfile -- "debug@4.4.2" "chalk@5.6.1"
 const root = path.resolve(import.meta.dirname, '..');
@@ -36,7 +36,7 @@ for (const lockfile of LOCKFILES) {
       'шукали': spec.version ? `${spec.name}@${spec.version}` : spec.name,
       'версії у файлі': [...new Set(found.map(([, pkg]) => pkg.version))].join(', ') || 'пакета немає',
       'збіг з інцидентом': spec.version ? (exact.length ? 'ТАК' : 'ні') : '',
-      'роль': lockfile.startsWith('tools/') ? 'прогонник' : [...new Set(found.map(([, pkg]) => (pkg.dev ? 'розробка' : 'випуск')))].join(', '),
+      'роль': lockfile.startsWith('tools/') ? 'інструмент вимірювань' : [...new Set(found.map(([, pkg]) => (pkg.dev ? 'розробка' : 'випуск')))].join(', '),
       'копій': found.length,
     });
   }
