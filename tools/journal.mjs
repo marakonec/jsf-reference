@@ -160,7 +160,7 @@ console.log(`Розділ ${lab}: у таблиці прогонів ${all.lengt
 if (summary.length) console.log(summaryLines.join('\n'));
 if (few.length) console.log(`\nМенше п'яти прогонів (протокол вимагає не менше п'яти): ${few.join('; ')}`);
 if (!all.length) {
-  console.error(`\nУ measurements/*.csv немає рядків з component = ЛР${lab}. Прогонник пише їх, якщо задано --component ЛР${lab}.`);
+  console.error(`\nУ measurements/*.csv немає рядків з component = ЛР${lab}. Інструмент вимірювань пише їх, якщо задано --component ЛР${lab}.`);
   process.exit(1);
 }
 if (dry) console.log('\n--dry: JOURNAL.md не змінено.');

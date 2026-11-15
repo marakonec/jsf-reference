@@ -11,7 +11,7 @@ import { parseCsv } from '../scatter.mjs';
 // Потребує встановленого Chrome або змінної CHROME_PATH.
 const root = path.resolve(import.meta.dirname, '..');
 const PAGE = `<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>т</title></head>
-<body><h1>Каталог для перевірки прогонника</h1><label>Фільтр <input aria-label="Фільтр"></label>
+<body><h1>Каталог для перевірки інструмента вимірювань</h1><label>Фільтр <input aria-label="Фільтр"></label>
 <button type="button">Оновити</button>
 <label>Сортування <select aria-label="Сортування"><option>назва</option><option>маса</option><option>дата</option></select></label>
 <table><tbody aria-label="Записи">${Array.from({ length: 50 }, (_, i) => `<tr><td>запис ${i}</td></tr>`).join('')}</tbody></table>
