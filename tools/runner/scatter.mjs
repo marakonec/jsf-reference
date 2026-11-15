@@ -20,7 +20,7 @@ export function parseCsv(text) {
   });
 }
 
-// Серія є однією командою прогонника, тобто рядками з однаковими variant і date.
+// Серія є однією командою інструмента вимірювань, тобто рядками з однаковими variant і date.
 export function series(rows) {
   const map = new Map();
   for (const r of rows) {
