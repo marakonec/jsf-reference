@@ -47,8 +47,10 @@ const onGitHub = origin.status === 0 && /github\.com/i.test(origin.stdout);
 add(onGitHub, 'origin', onGitHub ? origin.stdout.trim() : 'віддалений репозиторій origin не на GitHub');
 
 // У теці хмарної синхронізації довгі шляхи node_modules і синхронізація
-// тисяч файлів ламають встановлення на Windows.
-const inCloud = /onedrive|icloud|dropbox|google drive/i.test(root);
+// тисяч файлів ламають встановлення на Windows. На macOS iCloud Drive лежить
+// у ~/Library/Mobile Documents/com~apple~CloudDocs, а OneDrive, Dropbox і
+// Google Drive у ~/Library/CloudStorage, тому назви служби в шляху може не бути.
+const inCloud = /onedrive|icloud|dropbox|google drive|mobile documents|clouddocs|cloudstorage/i.test(root);
 add(!inCloud, 'шлях', inCloud ? `${root} у теці хмарної синхронізації, проєкт потрібно перенести в короткий шлях` : root);
 
 for (const r of results) console.log(`${r.ok ? '✓' : '✗'}  ${r.what.padEnd(18)} ${r.note}`);
